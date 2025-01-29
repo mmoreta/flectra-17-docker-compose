@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  web:
+    image: flectrahq/flectra:1.7
+    user: root
+    container_name: ${FLECTRA_CONTAINER_NAME}
+    depends_on:
+      - db
+    ports:
+      - "8090:7073"
+      - "8071:8071"
+    tty: true
+    command: --
+    volumes:
+      - ./addons:/mnt/extra-addons
+      - ./etc:/etc/flectra
+    environment:
+      - HOST=db
+      - USER=flectra
+      - PASSWORD=flectra17@2025
+    platform: linux/amd64
+    restart: always
+
+  db:
+    image: postgres:14
+    user: root
+    environment:
+      - POSTGRES_USER=flectra
+      - POSTGRES_PASSWORD=flectra@2025
+      - POSTGRES_DB=postgres
+    restart: always
+    volumes:
+      - ./postgresql:/var/lib/postgresql/data
