@@ -3,7 +3,7 @@ version: '3.8'
 services:
   web:
     image: flectrahq/flectra:1.7
-    user: root
+    user: flectra
     container_name: ${FLECTRA_CONTAINER_NAME}
     depends_on:
       - db
