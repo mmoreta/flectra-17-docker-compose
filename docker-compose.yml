@@ -4,7 +4,7 @@ services:
   web:
     image: flectrahq/flectra:1.7
     user: flectra
-    container_name: ${FLECTRA_CONTAINER_NAME}
+#    container_name: ${FLECTRA_CONTAINER_NAME}
     depends_on:
       - db
     ports:
@@ -18,16 +18,16 @@ services:
     environment:
       - HOST=db
       - USER=flectra
-      - PASSWORD=flectra17@2025
+      - PASSWORD=flectra
     platform: linux/amd64
     restart: always
 
   db:
     image: postgres:14
-    user: root
+    user: flectra
     environment:
       - POSTGRES_USER=flectra
-      - POSTGRES_PASSWORD=flectra@2025
+      - POSTGRES_PASSWORD=flectra
       - POSTGRES_DB=postgres
     restart: always
     volumes:
