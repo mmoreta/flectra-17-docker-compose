@@ -4,7 +4,7 @@ PORT=$2
 CHAT=$3
 
 # Clone Flectra directory
-git clone --depth=1 https://github.com/minhng92/odoo-16-docker-compose $DESTINATION
+git clone --depth=1 https://github.com/mmoreta/flectra-17-docker-compose $DESTINATION
 rm -rf $DESTINATION/.git
 
 # Create PostgreSQL directory
